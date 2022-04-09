@@ -4,6 +4,8 @@ wordList = ['ardvark', 'baboon', 'camel']
 
 chosenWord = random.choice(wordList)
 
+lives = 6
+
 print(f"The chosen word is {chosenWord}")
 
 display = []
@@ -25,6 +27,13 @@ while not endOfGame:
 
         if letter == guess:
             display[position] = letter
+
+    if guess not in chosenWord:
+        lives -= 1
+        print(f"You have {lives} lives remaining. ")
+        if lives == 0:
+            endOfGame = True
+            print("You lose.")
 
     print(display)
 
