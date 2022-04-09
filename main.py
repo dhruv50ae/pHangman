@@ -1,8 +1,8 @@
 import random
 
-wordList = ['ardvark', 'baboon', 'camel']
+import listOfWords
 
-chosenWord = random.choice(wordList)
+chosenWord = random.choice(listOfWords.wordList)
 
 lives = 6
 
@@ -18,6 +18,9 @@ while not endOfGame:
 
     guess = input("Guess a letter: ").lower()
 
+    if guess in display:
+        print(f"You've already guessed {guess}")
+
     for position in range(len(chosenWord)):
 
         letter = chosenWord[position]
@@ -29,6 +32,7 @@ while not endOfGame:
             display[position] = letter
 
     if guess not in chosenWord:
+        print(f"You guessed {guess}, life lost")
         lives -= 1
         print(f"You have {lives} lives remaining. ")
         if lives == 0:
